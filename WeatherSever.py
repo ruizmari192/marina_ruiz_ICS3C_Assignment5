@@ -1,14 +1,13 @@
-
 # WeatherServer.py
 # Run this program before running WeatherClient.py.
 
 import socket
 
 HOST = "127.0.0.1"
-PORT = 12345
+PORT = 26459
 
 # Each city is stored as:
-# City|Country|TemperatureC
+# City|Country|Temperature
 
 weather_data = [
     "Toronto|Canada|12",

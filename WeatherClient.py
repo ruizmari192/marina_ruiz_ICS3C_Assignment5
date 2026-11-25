@@ -10,19 +10,11 @@
 import socket
 
 SERVER_HOST = "127.0.0.1"  # Do not change this
-SERVER_PORT = 12345
+SERVER_PORT = 26459
 
 
 def connect_to_server():
-    """
-    -------------------------------------------------------------
-    Connect to the server and retrieve the weather information.
-    -------------------------------------------------------------
-    Parameters:
-
-    Returns:
-    -------------------------------------------------------------
-    """
+    """Connect to the server and retrieve the weather information."""
 
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect((SERVER_HOST, SERVER_PORT))
@@ -71,9 +63,18 @@ def process_weather_data(data):
     Each city list should look like:
     [city, country, temperature]
     """
+    cities = []
 
-    pass
+    # Separate the data into individual city records.
+    records = data.splitlines()
 
+    for record in records:
+        # Separate each record into its five fields.
+        #Hint: use record.split("|")
+        information = record.split("|")
+        cities.append(information)
+
+    return cities
 
 def display_all_cities(cities):
     """
@@ -96,7 +97,8 @@ def display_all_cities(cities):
     -------------------------------------------------------
     """
 
-    pass
+    for i in cities:
+        print(i)
 
 
 def search_city(cities):
@@ -118,9 +120,15 @@ def search_city(cities):
     - Display a message if the city cannot be found.
     -------------------------------------------------------
     """
+    name = input("Enter a name of a city: ").strip()
+    found = False
 
-    pass
-
+    for city in cities:
+        if city[0].lower() == name.lower():
+            print(f"{city[0]}, {city[1]}, {city[2]}")
+    if found == False:
+        print("Sorry, that city was not found")
+    
 
 def display_menu():
     """Display the program menu."""
