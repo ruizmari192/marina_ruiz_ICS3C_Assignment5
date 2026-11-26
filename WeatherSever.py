@@ -4,7 +4,7 @@
 import socket
 
 HOST = "127.0.0.1"
-PORT = 56459
+PORT = 29838
 
 # Each city is stored as:
 # City|Country|Temperature

@@ -10,7 +10,7 @@
 import socket
 
 SERVER_HOST = "127.0.0.1"  # Do not change this
-SERVER_PORT = 56459
+SERVER_PORT = 29838
 
 
 def connect_to_server():
@@ -123,6 +123,8 @@ def search_city(cities):
     for city in cities: #to loop through the cities list
         if city[0].lower() == name.lower(): #to check is the first item of the list (the name of the city) equals the city the user typed
             print(f"{city[0]}, {city[1]}, {city[2]}") 
+            found = True
+
     if found == False: #to create another answer if the city is not found 
         print("Sorry, that city was not found")
     
