@@ -10,7 +10,7 @@
 import socket
 
 SERVER_HOST = "127.0.0.1"  # Do not change this
-SERVER_PORT = 26459
+SERVER_PORT = 56459
 
 
 def connect_to_server():
@@ -63,16 +63,13 @@ def process_weather_data(data):
     Each city list should look like:
     [city, country, temperature]
     """
-    cities = []
+    cities = [] #to store the cities info separatedly 
 
-    # Separate the data into individual city records.
-    records = data.splitlines()
+    records = data.splitlines() #to separate the data from server into individual city records.
 
-    for record in records:
-        # Separate each record into its five fields.
-        #Hint: use record.split("|")
-        information = record.split("|")
-        cities.append(information)
+    for record in records: #to loop through the separated data
+        information = record.split("|") #to remove the "|"
+        cities.append(information) #to add the information of each city separated to the list
 
     return cities
 
@@ -97,8 +94,8 @@ def display_all_cities(cities):
     -------------------------------------------------------
     """
 
-    for i in cities:
-        print(i)
+    for i in cities:#to loop through all the information of the list cities
+        print(i) #to print everything
 
 
 def search_city(cities):
@@ -120,13 +117,13 @@ def search_city(cities):
     - Display a message if the city cannot be found.
     -------------------------------------------------------
     """
-    name = input("Enter a name of a city: ").strip()
-    found = False
+    name = input("Enter a name of a city: ").strip() #to ask for a city and to remove blank spaces so that there is no bugging when checking if that city is on the list
+    found = False #to keep track of wether the city user typed is on the list or not
 
-    for city in cities:
-        if city[0].lower() == name.lower():
-            print(f"{city[0]}, {city[1]}, {city[2]}")
-    if found == False:
+    for city in cities: #to loop through the cities list
+        if city[0].lower() == name.lower(): #to check is the first item of the list (the name of the city) equals the city the user typed
+            print(f"{city[0]}, {city[1]}, {city[2]}") 
+    if found == False: #to create another answer if the city is not found 
         print("Sorry, that city was not found")
     
 
